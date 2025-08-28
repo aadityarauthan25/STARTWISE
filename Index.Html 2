@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartWiseAnd – Entrepreneur Guidance Hub</title>
+  <meta name="description" content="SmartWiseAnd: stories, tools, and a community for entrepreneurs. Submit ideas, learn from failures, explore schemes, and get AI-style guidance." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --surface: #11182a;
+      --text: #f5f7ff;
+      --muted: #c0c6d9;
+      --brand1: #ff6a00; /* bold orange */
+      --brand2: #6a00ff; /* electric violet */
+      --accent: #15d1ff; /* cyan pop */
+      --ring: rgba(21, 209, 255, .4);
+      --shadow: 0 8px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --maxw: 1200px;
+    }
+    /* --- STARTWISE Replica styles --- */
+:root{
+  --sw-bg:#0f1115;
+  --sw-panel:#0b0d11;
+  --sw-muted:#9aa0a8;
+  --sw-accent:#5b8cff;
+  --sw-glass: rgba(255,255,255,0.04);
+  --sw-glass2: rgba(255,255,255,0.03);
+  --sw-radius:18px;
+}
+
+.sw-section{
+  margin:4rem auto;
+  max-width:1100px;
+  padding:28px;
+  background: var(--sw-bg);
+  border-radius: var(--sw-radius);
+  box-shadow:0 6px 20px rgba(0,0,0,0.45);
+}
+
+.sw-header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 14px;
+  border-radius:14px;
+  background: rgba(15,17,21,0.45);
+  border:1px solid rgba(255,255,255,0.04);
+  margin-bottom:20px;
+}
+.sw-brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.sw-dot{width:12px;height:12px;border-radius:999px;background:var(--sw-accent);}
+
+.sw-viewport{display:flex;gap:20px;align-items:flex-start;}
+.sw-mock{
+  flex:1 1 720px; border-radius:var(--sw-radius);
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow:0 30px 60px rgba(2,6,23,0.7);
+  background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));
+  padding:28px;
+}
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: radial-gradient(1200px 800px at 80% -10%, rgba(106,0,255,.35), transparent 60%),
+                                 radial-gradient(900px 700px at -10% -20%, rgba(255,106,0,.25), transparent 60%),
+                                 var(--bg);
+      color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(100% - 2rem, var(--maxw)); margin: 0 auto; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem; padding: .9rem 1.2rem; border: 0; border-radius: 999px;
+      font-weight: 700; letter-spacing: .2px; cursor: pointer; transition: transform .08s ease, box-shadow .2s ease, filter .2s ease;
+      background: linear-gradient(135deg, var(--brand1), var(--brand2)); color: #fff; box-shadow: var(--shadow);
+    }
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .btn.ghost { background: transparent; border: 2px solid rgba(255,255,255,.12); color: var(--text); }
+    .btn.ghost:hover { border-color: rgba(255,255,255,.3); }
+    .chip { display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .7rem; border-radius:999px; background:rgba(255,255,255,.08); color:var(--muted); font-weight:600; font-size:.85rem; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .gradient-text { background: linear-gradient(90deg, var(--brand1), var(--brand2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* Header */
+    .topbar { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(1.2) blur(10px); background: rgba(11,15,26,.6); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding: .9rem 0; }
+    .brand { display:flex; align-items:center; gap:.75rem; font-weight:800; letter-spacing:.2px; }
+    .brand-logo { width:34px; height:34px; border-radius:10px; background: linear-gradient(135deg, var(--brand2), var(--brand1)); display:grid; place-items:center; box-shadow: var(--shadow); }
+    .brand-logo svg { width:20px; height:20px; }
+    .nav a { color: var(--muted); font-weight:600; margin-left: 1rem; }
+    .nav a:hover { color: var(--text); }
+
+    /* Hero */
+    .hero { padding: 4rem 0 3rem; text-align:center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); margin: .3rem 0 1rem; line-height:1.1; font-weight: 800; }
+    .hero p { color: var(--muted); font-size: clamp(1rem, 2.5vw, 1.15rem); margin: 0 auto 1.6rem; max-width: 58ch; }
+    .hero-cta { display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; }
+
+    /* Sections */
+    section { padding: 3rem 0; }
+    h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin: 0 0 1.4rem; }
+    .grid { display:grid; gap: 1.1rem; }
+    .grid-3 { grid-template-columns: repeat(1, 1fr); }
+    @media (min-width: 760px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+    .story { padding: 1rem; }
+    .story h3 { margin: .3rem 0 .6rem; font-size: 1.1rem; }
+    .story p { color: var(--muted); font-size: .95rem; }
+
+    .two-col { display:grid; gap: 1.2rem; grid-template-columns: 1fr; }
+    @media (min-width: 980px) { .two-col { grid-template-columns: 1.2fr .8fr; align-items:start; } }
+
+    /* Forms */
+    form { display:grid; gap:.8rem; }
+    label { font-weight:700; font-size:.95rem; }
+    input, textarea, select { width: 100%; padding: .9rem 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06); color: var(--text); outline:none; }
+    textarea { min-height: 130px; resize: vertical; }
+    input:focus, textarea:focus, select:focus { box-shadow: 0 0 0 6px var(--ring); border-color: transparent; }
+
+    .board { display:grid; gap: .9rem; }
+    .idea { padding: 1rem; display:grid; gap:.5rem; }
+    .idea h4 { margin:.2rem 0; }
+    .idea .meta { color: var(--muted); font-size: .85rem; display:flex; gap:.6rem; align-items:center; }
+    .idea .vote { margin-left:auto; display:flex; gap:.4rem; }
+    .icon-btn { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: .45rem .6rem; cursor: pointer; }
+
+    /* Accordion */
+    details { background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius: 12px; padding: .8rem 1rem; }
+    summary { cursor: pointer; font-weight:700; }
+
+    /* Chatbot */
+    .bot { position: fixed; right: 18px; bottom: 18px; width: 340px; max-width: calc(100% - 36px); z-index: 60; }
+    .bot-panel { border-radius: var(--radius-lg); overflow: hidden; }
+    .bot-header { background: linear-gradient(90deg, var(--brand2), var(--brand1)); padding: .8rem 1rem; display:flex; align-items:center; gap:.6rem; font-weight:800; }
+    .bot-body { background: #0c1222; padding: .8rem; max-height: 380px; overflow:auto; }
+    .bot-msg { display:grid; gap:.35rem; margin:.6rem 0; }
+    .bot-msg .who { font-size:.8rem; color: var(--muted); }
+    .bot-msg .bubble { background: rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); padding:.6rem .75rem; border-radius: 12px; }
+    .bot-input { display:flex; gap:.4rem; padding:.6rem; background:#0c1222; border-top:1px solid rgba(255,255,255,.08); }
+    .bot-input input { flex:1; }
+
+    /* Chart */
+    .chart { padding: 1rem; }
+    canvas { width: 100%; height: 260px; display:block; }
+
+    /* Footer */
+    footer { padding: 2rem 0; color: var(--muted); text-align:center; }
+
+    /* Skip link */
+    .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus { position:static; width:auto; height:auto; background:var(--accent); color:#000; padding:.5rem; border-radius:8px; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand" aria-label="SmartWiseAnd">
+        <div class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12h6l3-7 3 14 3-7h3"/>
+          </svg>
+        </div>
+        <span>Smart<span class="gradient-text">Wise</span>And</span>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#stories">Stories</a>
+        <a href="#schemes">Schemes</a>
+        <a href="#ideas">Ideas</a>
+        <a href="#needs">Needs</a>
+        <a href="#stats">Stats</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container">
+      <div class="chip">🚀 Bold. Practical. Community‑first.</div>
+      <h1>Turn <span class="gradient-text">real needs</span> into winning ventures.</h1>
+      <p>SmartWiseAnd is your bold hub for entrepreneurial growth—learn from real stories, explore support schemes, submit ideas, hear people’s needs, and get AI‑style guidance in one powerful place.</p>
+      <div class="hero-cta">
+        <a href="#ideas" class="btn" aria-label="Submit your idea">Start with Your Idea</a>
+        <a href="#stories" class="btn ghost" aria-label="Browse entrepreneur stories">Learn from Stories</a>
+      </div>
+    </section>
+
+    <!-- STORIES -->
+    <section id="stories" class="container">
+      <h2>Entrepreneur Stories & Lessons</h2>
+      <div class="grid grid-3">
+        <article class="card story">
+          <div class="chip">Failure ➜ Pivot</div>
+          <h3>From Missed Launch to Market Fit</h3>
+          <p><strong>Key lesson:</strong> Validate with users early. A startup delayed six months building features users didn’t need. After 8 interviews, they pivoted to one core pain and grew 40% MoM.</p>
+        </article>
+        <article class="card story">
+          <div class="chip">Bootstrapped</div>
+          <h3>₹0 to ₹50L ARR with Focus</h3>
+          <p><strong>Key lesson:</strong> Charge from Day‑1. A two‑person team sold a simple B2B tool and reinvested profits. No funding. Tight feedback loops.</p>
+        </article>
+        <article class="card story">
+          <div class="chip">Team</div>
+          <h3>Hiring for the First 5 Roles</h3>
+          <p><strong>Key lesson:</strong> Hire for ownership, not only skill. Early team members shaped culture and velocity more than resumes.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SCHEMES / SUPPORT -->
+    <section id="schemes" class="container">
+      <h2>Government & Ecosystem Support</h2>
+      <div class="two-col">
+        <div class="card" style="padding:1rem;">
+          <p>Explore programs, grants, and incubators. (Replace sample items with your region‑specific research.)</p>
+          <details><summary>Startup Registration & DPIIT Recognition</summary>
+            <p>Benefits include tax exemptions, easier compliance, and access to funding programs.</p>
+          </details>
+          <details><summary>Credit Guarantee & Seed Support</summary>
+            <p>Seed funds, credit guarantees for collateral‑free loans, and mentorship via incubators.</p>
+          </details>
+          <details><summary>State‑level Innovation Missions</summary>
+            <p>State incubators, student innovation challenges, and prototyping grants.</p>
+          </details>
+        </div>
+        <div class="card chart">
+          <h3 style="margin:.2rem 0 1rem;">Sector Success Snapshot</h3>
+          <canvas id="sectorChart" aria-label="Bar chart of hypothetical sector success rates" role="img"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- IDEAS BOARD -->
+    <section id="ideas" class="container">
+      <h2>Submit & Explore Startup Ideas</h2>
+      <div class="two-col">
+        <form id="ideaForm" class="card" style="padding:1rem;" aria-labelledby="ideaFormTitle">
+          <h3 id="ideaFormTitle" style="margin-top:0;">Submit Your Idea</h3>
+          <label for="ititle">Title</label>
+          <input id="ititle" required placeholder="e.g., Hyper‑local Tutor Finder" />
+
+          <label for="isector">Sector</label>
+          <select id="isector" required>
+            <option value="">Choose a sector…</option>
+            <option>Health</option>
+            <option>EdTech</option>
+            <option>Agri</option>
+            <option>FinTech</option>
+            <option>Retail</option>
+            <option>Other</option>
+          </select>
+
+          <label for="iregion">Target Region/Area</label>
+          <input id="iregion" placeholder="e.g., Dehradun, Uttarakhand" />
+
+          <label for="idesc">Brief Description</label>
+          <textarea id="idesc" placeholder="What problem? Who benefits? Why now?"></textarea>
+
+          <button class="btn" type="submit">Add Idea</button>
+        </form>
+
+        <div>
+          <div class="card" style="padding: .8rem 1rem; margin-bottom:.8rem; display:flex; gap:.6rem; align-items:center;">
+            <input id="ideaSearch" placeholder="Search ideas… (title, sector, region)" aria-label="Search ideas" />
+            <button class="btn ghost" id="clearIdeas" type="button" title="Clear all ideas">Clear</button>
+          </div>
+          <div class="board" id="ideaBoard" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEEDS MARKETPLACE -->
+    <section id="needs" class="container">
+      <h2>People’s Needs – Build What Matters</h2>
+      <div class="two-col">
+        <form id="needForm" class="card" style="padding:1rem;" aria-labelledby="needFormTitle">
+          <h3 id="needFormTitle" style="margin-top:0;">Submit a Real‑World Need</h3>
+          <label for="ncity">City/Area</label>
+          <input id="ncity" placeholder="e.g., Delhi NCR" />
+
+          <label for="nneed">What do you wish existed?</label>
+          <textarea id="nneed" placeholder="Describe a problem or missing service…"></textarea>
+
+          <button class="btn" type="submit">Share Need</button>
+        </form>
+        <div>
+          <div class="card" style="padding: .8rem 1rem; margin-bottom:.8rem; display:flex; gap:.6rem; align-items:center;">
+            <input id="needSearch" placeholder="Search needs… (text or city)" aria-label="Search needs" />
+            <button class="btn ghost" id="clearNeeds" type="button" title="Clear all needs">Clear</button>
+          </div>
+          <div class="board" id="needBoard" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS / ABOUT -->
+    <section id="stats" class="container">
+      <h2>Smart Metrics & About</h2>
+      <div class="grid grid-3">
+        <div class="card" style="padding:1rem;">
+          <h3 style="margin-top:0;">Live Counters</h3>
+          <p><strong id="countIdeas">0</strong> ideas • <strong id="countNeeds">0</strong> needs • <strong id="countVotes">0</strong> votes cast</p>
+          <p class="muted">(Saved in your browser with localStorage for demo purposes.)</p>
+        </div>
+        <div class="card" style="padding:1rem;">
+          <h3 style="margin-top:0;">Mission</h3>
+          <p>Unite stories, guidance, and real community needs so entrepreneurs can build what matters—fast.</p>
+        </div>
+        <div class="card" style="padding:1rem;">
+          <h3 style="margin-top:0;">How to Present</h3>
+          <ul>
+            <li>Show a quick demo: add an idea ➜ upvote ➜ search.</li>
+            <li>Explain how AI‑style tips guide next steps.</li>
+            <li>Mention how you’ll plug in real scheme data later.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sw-section">
+  <div class="sw-header">
+    <div class="sw-brand">
+      <div class="sw-dot"></div>
+      <span>STARTWISE — Replica</span>
+    </div>
+    <div class="controls-top">
+      <button class="mini-btn active">Preview</button>
+      <button class="mini-btn">Details</button>
+    </div>
+  </div>
+
+  <div class="sw-viewport">
+    <div class="sw-mock">
+      <div class="mock-inner">
+        <div class="mock-hed">
+          <h3>Mock Startup Preview</h3>
+          <span style="color:var(--sw-muted);font-size:13px;">Demo UI</span>
+        </div>
+        <p style="color:var(--sw-muted)">This is a replica preview area where you can show an app mockup, 
+        a dashboard view, or interactive prototype of your idea.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <p>© <span id="year"></span> SmartWiseAnd • Built for Skill Expo</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Floating AI‑style Bot (demo, no backend needed) -->
+  <aside class="bot" aria-label="SmartWiseAnd Assistant">
+    <div class="bot-panel card">
+      <div class="bot-header">🤖 SmartWiseAnd Assistant</div>
+      <div class="bot-body" id="botBody">
+        <div class="bot-msg">
+          <div class="who">Assistant</div>
+          <div class="bubble">Hi! Ask me about funding, schemes, or how to validate your idea.</div>
+        </div>
+      </div>
+      <div class="bot-input">
+        <input id="botInput" placeholder="Type a question… e.g., How do I validate a startup?" aria-label="Chat input" />
+        <button class="btn" id="botSend" aria-label="Send message">Send</button>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    // ---------- Utilities ----------
+    const $ = (q, el=document) => el.querySelector(q);
+    const $$ = (q, el=document) => Array.from(el.querySelectorAll(q));
+    const store = {
+      get(key, fallback){ try { return JSON.parse(localStorage.getItem(key)) ?? fallback } catch { return fallback } },
+      set(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+    };
+
+    // ---------- Year ----------
+    $('#year').textContent = new Date().getFullYear();
+
+    // ---------- Demo chart (no library) ----------
+    const chart = document.getElementById('sectorChart');
+    const ctx = chart.getContext('2d');
+    const sectors = [
+      { name: 'FinTech', v: 72 },
+      { name: 'EdTech', v: 58 },
+      { name: 'Health', v: 65 },
+      { name: 'Agri', v: 44 },
+      { name: 'Retail', v: 51 }
+    ];
+    function drawChart(){
+      const w = chart.width = chart.clientWidth * devicePixelRatio;
+      const h = chart.height = chart.clientHeight * devicePixelRatio;
+      const pad = 40 * devicePixelRatio;
+      const bw = (w - pad*2) / sectors.length * 0.7;
+      ctx.clearRect(0,0,w,h);
+      ctx.font = `${12*devicePixelRatio}px Inter`;
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      const max = Math.max(...sectors.map(s=>s.v));
+      sectors.forEach((s, i) => {
+        const x = pad + i * ((w - pad*2)/sectors.length) + ((w - pad*2)/sectors.length - bw)/2;
+        const y = h - pad;
+        const bh = (s.v/max) * (h - pad*2);
+        // bar
+        const grad = ctx.createLinearGradient(x, y-bh, x+bw, y);
+        grad.addColorStop(0,'#ff6a00');
+        grad.addColorStop(1,'#6a00ff');
+        ctx.fillStyle = grad;
+        ctx.fillRect(x, y - bh, bw, bh);
+        // label
+        ctx.fillStyle = 'rgba(255,255,255,0.8)';
+        ctx.fillText(s.name, x, y + 14*devicePixelRatio);
+        ctx.fillText(s.v + '%', x, y - bh - 6*devicePixelRatio);
+      });
+    }
+    addEventListener('resize', drawChart); drawChart();
+
+    // ---------- Ideas ----------
+    const ideaForm = $('#ideaForm');
+    const ideaBoard = $('#ideaBoard');
+    const ideaSearch = $('#ideaSearch');
+    const clearIdeasBtn = $('#clearIdeas');
+
+    function loadIdeas(){ return store.get('ideas', []); }
+    function saveIdeas(list){ store.set('ideas', list); updateCounts(); }
+
+    function renderIdeas(filter=''){
+      const q = filter.trim().toLowerCase();
+      const ideas = loadIdeas();
+      ideaBoard.innerHTML = '';
+      ideas
+        .filter(it => [it.title, it.sector, it.region, it.desc].join(' ').toLowerCase().includes(q))
+        .forEach((it, idx) => {
+          const card = document.createElement('article');
+          card.className = 'card idea';
+          card.innerHTML = `
+            <div class="chip">${it.sector || 'Other'}</div>
+            <h4>${it.title}</h4>
+            <div class="meta">
+              <span>Region: ${it.region || '—'}</span>
+              <span class="vote">
+                <button class="icon-btn" aria-label="Upvote">⬆️</button>
+                <span>${it.votes||0}</span>
+              </span>
+            </div>
+            <p>${it.desc||''}</p>
+          `;
+          card.querySelector('.icon-btn').addEventListener('click', () => {
+            const list = loadIdeas();
+            list[idx].votes = (list[idx].votes||0) + 1;
+            saveIdeas(list);
+            renderIdeas(ideaSearch.value);
+          });
+          ideaBoard.appendChild(card);
+        });
+    }
+
+    ideaForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const item = {
+        title: $('#ititle').value.trim(),
+        sector: $('#isector').value,
+        region: $('#iregion').value.trim(),
+        desc: $('#idesc').value.trim(),
+        votes: 0,
+        created: Date.now()
+      };
+      if(!item.title || !item.sector){ alert('Please add a title and sector.'); return; }
+      const list = loadIdeas(); list.unshift(item); saveIdeas(list);
+      ideaForm.reset(); renderIdeas(ideaSearch.value);
+    });
+    ideaSearch.addEventListener('input', () => renderIdeas(ideaSearch.value));
+    clearIdeasBtn.addEventListener('click', () => { if(confirm('Clear all ideas?')){ saveIdeas([]); renderIdeas(); } });
+
+    // ---------- Needs ----------
+    const needForm = $('#needForm');
+    const needBoard = $('#needBoard');
+    const needSearch = $('#needSearch');
+    const clearNeedsBtn = $('#clearNeeds');
+
+    function loadNeeds(){ return store.get('needs', []); }
+    function saveNeeds(list){ store.set('needs', list); updateCounts(); }
+
+    function renderNeeds(filter=''){
+      const q = filter.trim().toLowerCase();
+      const needs = loadNeeds();
+      needBoard.innerHTML = '';
+      needs
+        .filter(n => [n.city, n.text].join(' ').toLowerCase().includes(q))
+        .forEach((n) => {
+          const card = document.createElement('article');
+          card.className = 'card idea';
+          card.innerHTML = `
+            <div class="chip">${n.city || 'Community'}</div>
+            <h4>Need:</h4>
+            <p>${n.text}</p>
+          `;
+          needBoard.appendChild(card);
+        });
+    }
+
+    needForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const item = { city: $('#ncity').value.trim(), text: $('#nneed').value.trim(), created: Date.now() };
+      if(!item.text){ alert('Please describe the need.'); return; }
+      const list = loadNeeds(); list.unshift(item); saveNeeds(list);
+      needForm.reset(); renderNeeds(needSearch.value);
+    });
+    needSearch.addEventListener('input', () => renderNeeds(needSearch.value));
+    clearNeedsBtn.addEventListener('click', () => { if(confirm('Clear all needs?')){ saveNeeds([]); renderNeeds(); } });
+
+    // ---------- Counts ----------
+    function updateCounts(){
+      $('#countIdeas').textContent = loadIdeas().length;
+      $('#countNeeds').textContent = loadNeeds().length;
+      $('#countVotes').textContent = loadIdeas().reduce((a,b)=>a+(b.votes||0),0);
+    }
+
+    // ---------- Demo Bot ----------
+    const botBody = $('#botBody');
+    const botInput = $('#botInput');
+    $('#botSend').addEventListener('click', sendBot);
+    botInput.addEventListener('keydown', e => { if(e.key==='Enter'){ e.preventDefault(); sendBot(); }});
+
+    function appendMsg(who, text){
+      const wrap = document.createElement('div');
+      wrap.className = 'bot-msg';
+      wrap.innerHTML = `<div class="who">${who}</div><div class="bubble">${text}</div>`;
+      botBody.appendChild(wrap); botBody.scrollTop = botBody.scrollHeight;
+    }
+
+    function sendBot(){
+      const q = botInput.value.trim(); if(!q) return; botInput.value = '';
+      appendMsg('You', q);
+      setTimeout(()=>{
+        appendMsg('Assistant', botAnswer(q));
+      }, 300);
+    }
+
+    function botAnswer(q){
+      const s = q.toLowerCase();
+      if(s.includes('validate')) return 'Start with 5–10 user interviews. Define the problem, measure willingness to pay, and build a 1‑page landing page to collect signups before coding.';
+      if(s.includes('fund') || s.includes('grant') || s.includes('loan')) return 'Look for seed grants via state innovation missions and campus incubators. Keep a 12‑month runway plan and a simple use‑of‑funds chart (build, market, ops).';
+      if(s.includes('scheme') || s.includes('government')) return 'Shortlist schemes by sector and stage. For demo, list DPIIT recognition, seed support, and state incubator programs, then link to official portals.';
+      if(s.includes('mvp') || s.includes('prototype')) return 'Ship a focused MVP: 1 core problem → 1 feature → 1 user type. Aim for 2‑week build cycles and track a single success metric.';
+      if(s.includes('marketing') || s.includes('customers')) return 'Pick one channel: community groups, reels, or cold emails. Write a clear value prop and add 2 customer testimonials ASAP.';
+      return 'Tip: Write your one‑line pitch (Who + Problem + Solution + Outcome). I can also help prioritize features using an Impact vs Effort matrix.';
+    }
+
+    // ---------- Init ----------
+    renderIdeas();
+    renderNeeds();
+    updateCounts();
+  </script>
+</body>
+</html>
