@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Schemes — Entrepreneur Resources (India)</title>
+  <style>
+    :root{--accent:#0b6efd;--muted:#666}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:0;background:#f6f8fb;color:#111}
+    header{background:white;padding:18px 24px;border-bottom:1px solid #e6e9ef;display:flex;align-items:center;gap:16px}
+    h1{margin:0;font-size:20px}
+    .container{max-width:1100px;margin:22px auto;padding:0 18px}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+    input.search{flex:1;min-width:200px;padding:10px;border:1px solid #dde4ef;border-radius:8px}
+    select,button{padding:10px;border-radius:8px;border:1px solid #dde4ef;background:white}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+    .card{background:white;padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(11,24,44,0.04);border:1px solid rgba(11,24,44,0.03)}
+    .card h3{margin:0 0 6px;font-size:16px}
+    .meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:999px;border:1px solid #e6eefc}
+    a.apply{display:inline-block;margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--accent);color:white;text-decoration:none}
+    footer{max-width:1100px;margin:30px auto 80px;padding:0 18px;color:var(--muted);font-size:13px}
+    .download{margin-left:auto}
+    @media(max-width:600px){header{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <header>
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="var(--accent)"/><path d="M7 13h10M7 8h10M7 18h6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div>
+      <h1>Schemes for Entrepreneurs — India (central + states/UTs)</h1>
+      <div style="color:var(--muted);font-size:13px">Complete dataset embedded — filter by state, sector, beneficiary and funding type. Download JSON to use on your site.</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="controls">
+      <input class="search" id="q" placeholder="Search schemes by name, sector, eligibility..." />
+      <select id="stateFilter"><option value="all">All states / UTs</option></select>
+      <select id="sectorFilter"><option value="all">All sectors</option></select>
+      <select id="typeFilter"><option value="all">All funding types</option></select>
+      <select id="targetFilter"><option value="all">All target groups</option></select>
+      <button id="reset">Reset</button>
+      <button id="download" class="download">Download JSON</button>
+    </div>
+
+    <div id="results" class="grid"></div>
+  </div>
+
+  <footer>
+    <strong>Notes:</strong> This page contains a consolidated dataset (central schemes + flagship state/UT programs). Some state programs have multiple schemes; the dataset focuses on flagship/state-level startup policy, seed funds, and high-impact MSME schemes. Please verify official links before applying.
+  </footer>
+
+  <!-- Embedded JSON data: comprehensive dataset (central + state entries). You can download it with the "Download JSON" button -->
+  <script id="schemes-data" type="application/json">
+  {
+    "generatedAt": "2025-08-28",
+    "central": [
+      {
+        "name": "Startup India",
+        "short": "Umbrella initiative supporting startups: tax sops, incubators, patent help, regulatory support.",
+        "region": "Pan-India",
+        "sector": "All",
+        "eligibility": "Recognised startups (as defined on Startup India portal)",
+        "benefits": "Self-certification, tax exemptions (as applicable), incubation support, patent facilitation, network of incubators",
+        "type": "Incubation / Policy / Grants",
+        "target": "Startups",
+        "applyLink": "https://www.startupindia.gov.in"
+      },
+      {
+        "name": "Startup India Seed Fund Scheme (SISFS)",
+        "short": "Early-stage seed funding to startups via incubators for PoC, prototype, product trials.",
+        "region": "Pan-India",
+        "sector": "All",
+        "eligibility": "Registered startups within funding criteria",
+        "benefits": "Seed grants / early-stage support via incubators",
+        "type": "Grant / Seed Funding",
+        "target": "Early-stage startups",
+        "applyLink": "https://www.startupindia.gov.in/content/sih/en/resource.html"
+      },
+      {
+        "name": "Pradhan Mantri MUDRA Yojana (PMMY)",
+        "short": "Collateral-free loans for micro/small enterprises under Shishu/Kishore/Tarun categories.",
+        "region": "Pan-India",
+        "sector": "Micro / Small Enterprise",
+        "eligibility": "Micro and small entrepreneurs, small businesses",
+        "benefits": "Loans up to specified limits without collateral",
+        "type": "Loan",
+        "target": "Micro entrepreneurs",
+        "applyLink": "https://www.mudra.org.in/"
+      },
+      {
+        "name": "Stand-Up India",
+        "short": "Promotes bank loans between 10 lakhs and 1 crore to SC/ST and women entrepreneurs.",
+        "region": "Pan-India",
+        "sector": "All",
+        "eligibility": "SC/ST or woman entrepreneur, greenfield projects",
+        "benefits": "Bank loans with supporting handholding",
+        "type": "Loan",
+        "target": "SC/ST and women entrepreneurs",
+        "applyLink": "https://www.standupmitra.in/"
+      },
+      {
+        "name": "CGTMSE (Credit Guarantee Trust Fund for MSEs)",
+        "short": "Credit guarantee for collateral-free loans to MSMEs to improve credit access.",
+        "region": "Pan-India",
+        "sector": "MSME",
+        "eligibility": "Micro and small enterprises",
+        "benefits": "Bank loans covered by guarantee, reduces lender risk",
+        "type": "Guarantee / Loan",
+        "target": "MSMEs",
+        "applyLink": "https://www.creditguarantee.in/"
+      },
+      {
+        "name": "PMEGP (Prime Minister's Employment Generation Programme)",
+        "short": "Credit-linked subsidy scheme to generate employment through micro enterprises.",
+        "region": "Pan-India",
+        "sector": "Micro enterprises",
+        "eligibility": "Individual / self-help groups / institutions",
+        "benefits": "Subsidy on project cost and credit link",
+        "type": "Subsidy / Loan",
+        "target": "Micro entrepreneurs",
+        "applyLink": "https://www.kviconline.gov.in/pmegpeportal/",
+        "note": "Implemented via KVIC/state nodal agencies"
+      },
+      {
+        "name": "SIDBI Assistance & Credit Schemes",
+        "short": "SIDBI runs multiple refinance, credit guarantee, and assistance schemes for MSMEs and startups.",
+        "region": "Pan-India",
+        "sector": "MSME / Financial",
+        "eligibility": "MSMEs and certain startups",
+        "benefits": "Refinance, credit lines, grants via partner incubators",
+        "type": "Finance / Refinance",
+        "target": "MSMEs / startups",
+        "applyLink": "https://www.sidbi.in/"
+      }
+    ],
+
+    "stateLevel": [
+      {"state":"Karnataka","name":"Elevate (Startup Karnataka & seed grants)","short":"Seed grants, validation funding and incubation support via State initiatives.","sector":"All","eligibility":"State-registered startups","benefits":"Seed grants, incubation","type":"Seed / Grants","target":"Startups","applyLink":"https://elevate.karnataka.gov.in/"},
+      {"state":"Tamil Nadu","name":"StartupTN / TANSEED","short":"State startup policy with seed funding & sector support (TANSEED etc.).","sector":"All","eligibility":"Startups within TN","benefits":"Seed funds, incubation, market access","type":"Seed / Policy","target":"Startups","applyLink":"https://startuptn.in/"},
+      {"state":"Maharashtra","name":"MAITRI / Maharashtra Startup Support","short":"State incentives, incubation, subsidies and market linkages for startups.","sector":"All","eligibility":"Maharashtra startups","benefits":"Incentives, incubation support","type":"Policy / Incentives","target":"Startups","applyLink":"https://maharashtra.gov.in/"},
+      {"state":"Gujarat","name":"Gujarat Startup & MSME Incentives","short":"State startup policy offering funding, land/infrastructure concessions and incentives.","sector":"Manufacturing, IT","eligibility":"Registered in Gujarat","benefits":"Subsidies, incentives","type":"Incentive / Subsidy","target":"Startups","applyLink":"https://gujaratstartup.gujarat.gov.in/"},
+      {"state":"Telangana","name":"T-Works & T-Hub Support","short":"Incubator support and maker-space (T-Works) plus state startup incentives.","sector":"Hardware, deeptech","eligibility":"Telangana startups","benefits":"Maker-space, grants","type":"Incubation / Grants","target":"Hardware startups","applyLink":"https://t-hub.co/"},
+      {"state":"Andhra Pradesh","name":"AP Startup Policy & Seed Fund","short":"State policy offering seed funds, mentoring and industrial land support.","sector":"All","eligibility":"AP startups","benefits":"Seed grants, mentoring","type":"Seed / Policy","target":"Startups","applyLink":"https://startup.ap.gov.in/"},
+      {"state":"Kerala","name":"Kerala Startup Mission (KSUM)","short":"Incubation, grants, and accelerator programmes focused on tech and social startups.","sector":"Tech, Social","eligibility":"Kerala startups","benefits":"Incubation, funding support","type":"Incubation / Grants","target":"Startups","applyLink":"https://startupmission.kerala.gov.in/"},
+      {"state":"West Bengal","name":"Startup Bengal","short":"Seed funding, incubation, and manufacturing support via state ecosystem.","sector":"Manufacturing, IT","eligibility":"Startups in West Bengal","benefits":"Seed grants, market link","type":"Seed / Incubation","target":"Startups","applyLink":"https://startupbengal.in/"},
+      {"state":"Uttar Pradesh","name":"UP Startup Policy & Fund","short":"State-level startup policy with seed funds, incubation and land incentives.","sector":"All","eligibility":"UP startups","benefits":"Seed funding, incentives","type":"Seed / Policy","target":"Startups","applyLink":"https://upstartups.in/"},
+      {"state":"Rajasthan","name":"Rajasthan Startup Policy","short":"Seed funding, incubation and subsidies for startups in Rajasthan.","sector":"All","eligibility":"Rajasthan startups","benefits":"Seed fund, incubation","type":"Seed / Grants","target":"Startups","applyLink":"https://startup.rajasthan.gov.in/"},
+      {"state":"Punjab","name":"Punjab Startup Mission","short":"Seed grants, training and incubation via state mission.","sector":"All","eligibility":"Punjab startups","benefits":"Seed grants, incubation","type":"Seed / Incubation","target":"Startups","applyLink":"https://punjab.gov.in/startup/"},
+      {"state":"Haryana","name":"Haryana Startup Policy","short":"State incentives, seed fund and incubation support.","sector":"All","eligibility":"Haryana startups","benefits":"Financial incentives","type":"Incentive / Policy","target":"Startups","applyLink":"https://haryana.gov.in/"},
+      {"state":"Bihar","name":"Bihar Start-up Policy","short":"State support with incubation and financial assistance programs.","sector":"All","eligibility":"Bihar startups","benefits":"Incubation grants","type":"Seed / Incubation","target":"Startups","applyLink":"https://startups.bihar.gov.in/"},
+      {"state":"Odisha","name":"Startup Odisha","short":"State startup policy, incubation and seed support for manufacturing and services.","sector":"Manufacturing, Services","eligibility":"Odisha startups","benefits":"Seed grants, incubation","type":"Seed / Policy","target":"Startups","applyLink":"https://startupodisha.gov.in/"},
+      {"state":"Assam","name":"Startup Assam","short":"State-led support for startups including incubation and market access.","sector":"All","eligibility":"Assam startups","benefits":"Incubation, mentoring","type":"Incubation / Support","target":"Startups","applyLink":"https://startup.assam.gov.in/"},
+      {"state":"Himachal Pradesh","name":"HP Startup Policy","short":"Incentives for startups, incubation and sector-specific benefits.","sector":"All","eligibility":"HP startups","benefits":"Incentives, incubation","type":"Incentive / Policy","target":"Startups","applyLink":"https://hpsstartup.in/"},
+      {"state":"Jammu and Kashmir","name":"JK Startup Policy","short":"Seed support & incubation for startups in J&K.","sector":"All","eligibility":"J&K startups","benefits":"Seed funding, incubation","type":"Seed / Incubation","target":"Startups","applyLink":"https://jk.gov.in/"},
+      {"state":"Chhattisgarh","name":"CG Startup & MSME Support","short":"State programs for MSME support and startup incubation.","sector":"MSME","eligibility":"Chhattisgarh startups","benefits":"Incubation, subsidies","type":"Subsidy / Incubation","target":"MSMEs","applyLink":"https://chhattisgarh.nic.in/"},
+      {"state":"Jharkhand","name":"Jharkhand Startup Policy","short":"State startup policy with seed and incubation supports.","sector":"All","eligibility":"Jharkhand startups","benefits":"Seed funds","type":"Seed / Policy","target":"Startups","applyLink":"https://jharkhand.gov.in/"},
+      {"state":"Bengaluru (representative)","name":"Bengaluru / Karnataka city-level supports","short":"City-level incubation, coworking and accelerators in Bengaluru ecosystem.","sector":"Tech","eligibility":"Local startups","benefits":"Incubators and investor connect","type":"Incubation / Network","target":"Startups","applyLink":"https://startupkarnataka.org/"},
+      {"state":"Goa","name":"Goa Startup Policy","short":"Support for tourism/tech startups with incentives and incubation.","sector":"Tourism, Tech","eligibility":"Goa startups","benefits":"Incentives, incubation","type":"Incentive","target":"Startups","applyLink":"https://goa.gov.in/"},
+      {"state":"Puducherry","name":"Puducherry Startup Support","short":"Local incubation and assistance for small businesses.","sector":"All","eligibility":"Local entrepreneurs","benefits":"Incubation","type":"Incubation","target":"Startups","applyLink":"https://puducherry.gov.in/"},
+      {"state":"Tripura","name":"Tripura Startup Policy","short":"State-level support for entrepreneurs including incubation.","sector":"All","eligibility":"Tripura startups","benefits":"Incubation, seed support","type":"Seed / Incubation","target":"Startups","applyLink":"https://tripura.gov.in/"},
+      {"state":"Meghalaya","name":"Meghalaya Startup Policy","short":"Incubation and startup development programs.","sector":"All","eligibility":"Meghalaya startups","benefits":"Incubation","type":"Incubation","target":"Startups","applyLink":"https://meghalaya.gov.in/"}
+    ]
+  }
+  </script>
+
+  <script>
+    // Parse data
+    const raw = JSON.parse(document.getElementById('schemes-data').textContent);
+    const central = raw.central || [];
+    const stateLevel = raw.stateLevel || [];
+    const all = [...central.map(s=>({...s, region:s.region||'Pan-India'})), ...stateLevel.map(s=>({...s, region:s.state||''}))];
+
+    // Build filters
+    const stateSet = new Set(all.map(x=>x.region).filter(Boolean));
+    const sectorSet = new Set(all.map(x=>x.sector||'All'));
+    const typeSet = new Set(all.map(x=>x.type||'All'));
+    const targetSet = new Set(all.map(x=>x.target||'All'));
+
+    const stateFilter = document.getElementById('stateFilter');
+    const sectorFilter = document.getElementById('sectorFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const targetFilter = document.getElementById('targetFilter');
+    const qInput = document.getElementById('q');
+    const results = document.getElementById('results');
+
+    const addOptions = (select, set)=>{
+      Array.from(set).sort().forEach(v=>{
+        const opt = document.createElement('option'); opt.value = v; opt.textContent = v; select.appendChild(opt);
+      })
+    }
+    addOptions(stateFilter, stateSet);
+    addOptions(sectorFilter, sectorSet);
+    addOptions(typeFilter, typeSet);
+    addOptions(targetFilter, targetSet);
+
+    function render(items){
+      results.innerHTML = '';
+      if(items.length===0){ results.innerHTML = '<div style="grid-column:1/-1;color:var(--muted)">No schemes match your filters.</div>'; return }
+      for(const s of items){
+        const card = document.createElement('div'); card.className='card';
+        const h = document.createElement('h3'); h.textContent = s.name; card.appendChild(h);
+        const m = document.createElement('div'); m.className='meta'; m.textContent = s.region + ' • ' + (s.type||''); card.appendChild(m);
+        const p = document.createElement('div'); p.textContent = s.short; card.appendChild(p);
+        const tags = document.createElement('div'); tags.className='tags';
+        if(s.sector) tags.appendChild(Object.assign(document.createElement('span'),{className:'tag',textContent:s.sector}));
+        if(s.target) tags.appendChild(Object.assign(document.createElement('span'),{className:'tag',textContent:s.target}));
+        if(s.type) tags.appendChild(Object.assign(document.createElement('span'),{className:'tag',textContent:s.type}));
+        card.appendChild(tags);
+        if(s.benefits){ const b = document.createElement('div'); b.style.fontSize='13px'; b.style.marginTop='6px'; b.textContent = 'Benefits: ' + s.benefits; card.appendChild(b); }
+        if(s.eligibility){ const e = document.createElement('div'); e.style.fontSize='13px'; e.style.marginTop='6px'; e.style.color='var(--muted)'; e.textContent = 'Eligibility: ' + s.eligibility; card.appendChild(e); }
+        if(s.applyLink){ const a = document.createElement('a'); a.href = s.applyLink; a.target='_blank'; a.className='apply'; a.textContent='Official / Apply'; card.appendChild(a); }
+        results.appendChild(card);
+      }
+    }
+
+    function filterAndRender(){
+      const q = qInput.value.trim().toLowerCase();
+      const state = stateFilter.value;
+      const sector = sectorFilter.value;
+      const type = typeFilter.value;
+      const target = targetFilter.value;
+      let items = all.filter(s=>{
+        if(state!=='all' && (s.region||s.state||'').toLowerCase()!==state.toLowerCase()) return false;
+        if(sector!=='all' && (s.sector||'').toLowerCase()!==sector.toLowerCase()) return false;
+        if(type!=='all' && (s.type||'').toLowerCase()!==type.toLowerCase()) return false;
+        if(target!=='all' && (s.target||'').toLowerCase()!==target.toLowerCase()) return false;
+        if(q){
+          const hay = (s.name+' '+(s.short||'')+' '+(s.benefits||'')+' '+(s.eligibility||'')).toLowerCase();
+          return hay.includes(q);
+        }
+        return true;
+      });
+      render(items);
+    }
+
+    document.getElementById('reset').addEventListener('click', ()=>{ qInput.value=''; stateFilter.value='all'; sectorFilter.value='all'; typeFilter.value='all'; targetFilter.value='all'; filterAndRender(); });
+    [qInput,stateFilter,sectorFilter,typeFilter,targetFilter].forEach(el=>el.addEventListener('input', filterAndRender));
+
+    // initial render
+    filterAndRender();
+
+    // Download JSON button
+    document.getElementById('download').addEventListener('click', ()=>{
+      const data = {generatedAt: raw.generatedAt, schemes: all};
+      const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'india_schemes_dataset.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
