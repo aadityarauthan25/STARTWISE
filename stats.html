@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StartWise – Stats</title>
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a001a, #330033);
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      background: rgba(0,0,0,0.4);
+      border-bottom: 2px solid #bb33ff;
+      font-size: 2rem;
+      color: #bb33ff;
+      text-shadow: 0 0 10px #ff33ff;
+    }
+
+    .chart-container {
+      width: 80%;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #bb33ff;
+    }
+
+    canvas {
+      max-width: 100%;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.4);
+      border-top: 2px solid #bb33ff;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>📊 StartWise Stats Dashboard</header>
+
+  <!-- Chart 1: Startup Growth -->
+  <div class="chart-container">
+    <h2>Startup Growth in India (2016–2024)</h2>
+    <canvas id="growthChart"></canvas>
+  </div>
+
+  <!-- Chart 2: Funding by Sector -->
+  <div class="chart-container">
+    <h2>Funding by Sector (2024)</h2>
+    <canvas id="sectorChart"></canvas>
+  </div>
+
+  <!-- Chart 3: Age Distribution -->
+  <div class="chart-container">
+    <h2>Age Distribution of Entrepreneurs</h2>
+    <canvas id="ageChart"></canvas>
+  </div>
+
+  <footer>
+    © 2025 StartWise | Data for demo purposes
+  </footer>
+
+  <script>
+    // Chart 1: Startup Growth
+    const ctx1 = document.getElementById('growthChart');
+    new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+        datasets: [{
+          label: "Number of Startups (in thousands)",
+          data: [4, 7, 12, 18, 27, 39, 55, 70, 85],
+          borderColor: "#bb33ff",
+          backgroundColor: "rgba(187, 51, 255, 0.3)",
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { labels: { color: '#fff' } } },
+        scales: {
+          x: { ticks: { color: "#fff" } },
+          y: { ticks: { color: "#fff" } }
+        }
+      }
+    });
+
+    // Chart 2: Funding by Sector
+    const ctx2 = document.getElementById('sectorChart');
+    new Chart(ctx2, {
+      type: 'doughnut',
+      data: {
+        labels: ["FinTech", "EdTech", "HealthTech", "E-commerce", "AI & SaaS"],
+        datasets: [{
+          label: "Funding Share",
+          data: [25, 15, 20, 30, 10],
+          backgroundColor: [
+            "#ff33ff",
+            "#9933ff",
+            "#6600cc",
+            "#cc33ff",
+            "#ff66ff"
+          ],
+          borderColor: "#111",
+          borderWidth: 2
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { labels: { color: "#fff" } }
+        }
+      }
+    });
+
+    // Chart 3: Age Distribution
+    const ctx3 = document.getElementById('ageChart');
+    new Chart(ctx3, {
+      type: 'bar',
+      data: {
+        labels: ["<25", "25-30", "30-40", "40+"],
+        datasets: [{
+          label: "Percentage of Founders",
+          data: [15, 40, 35, 10],
+          backgroundColor: "#bb33ff"
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { labels: { color: "#fff" } } },
+        scales: {
+          x: { ticks: { color: "#fff" } },
+          y: { ticks: { color: "#fff" } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
