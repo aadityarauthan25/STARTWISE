@@ -114,6 +114,56 @@
     /* Skip link */
     .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
     .skip:focus { position:static; width:auto; height:auto; background:var(--accent); color:#000; padding:.5rem; border-radius:8px; }
+    <style>
+/* --- Chatbot Styles --- */
+#chatbot {
+  width: 350px;
+  height: 500px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+
+#chatbot iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Tablet and small laptops */
+@media screen and (max-width: 1024px) {
+  #chatbot {
+    width: 300px;
+    height: 450px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* Mobile screens */
+@media screen and (max-width: 768px) {
+  #chatbot {
+    width: 90%;
+    height: 55%;
+    bottom: 10px;
+    right: 5%;
+    border-radius: 10px;
+  }
+}
+
+/* Very small phones */
+@media screen and (max-width: 480px) {
+  #chatbot {
+    width: 95%;
+    height: 50%;
+    bottom: 5px;
+    right: 2.5%;
+  }
+}
   </style>
 </head>
 <body>
